@@ -1,435 +1,170 @@
-<!DOCTYPE html>
-<html lang="en">
+
+<!doctype html>
+<html lang="pt-BR" data-lang="pt">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Thales Leal Veloso | Portfolio</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thales Leal Veloso</title>
+<meta name="description" content="Thales Leal Veloso. Assistente de TI: suporte, infraestrutura e desenvolvimento.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg: #0a0a0a;
-    --bg-elev: #141414;
-    --bg-elev-2: #1c1c1c;
-    --border: #2c2c2c;
-    --text: #ffffff;
-    --text-dim: #b3b3b3;
-    --text-faint: #737373;
-    --accent: #b3b3b3;
-    --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
-    --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    --display: 'Bree Serif', 'Inter', serif;
-  }
-  *{ box-sizing: border-box; margin:0; padding:0; }
-  html{ scroll-behavior: smooth; }
-  body{
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--sans);
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-  }
-  .wrap{ max-width: 960px; margin: 0 auto; padding: 0 24px; position:relative; z-index:1; }
-
-  /* NAV */
-  nav{
-    position: sticky; top:0; z-index: 50;
-    background: rgba(10,10,10,0.9);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border);
-  }
-  nav .wrap{ display:flex; align-items:center; justify-content:space-between; padding: 16px 24px; }
-  .brand{ font-family: var(--display); font-weight:400; color: var(--text); font-size: 17px; letter-spacing:-0.01em; }
-  .brand span{ color: var(--accent); }
-  .navlinks{ display:flex; gap: 28px; list-style:none; }
-  .navlinks a{ color: var(--text-dim); text-decoration:none; font-size: 14px; font-weight:500; transition: color .15s; }
-  .navlinks a:hover{ color: var(--text); }
-  .nav-cta{
-    font-family: var(--sans); font-size: 13px; color: var(--bg);
-    background: var(--text); padding: 8px 14px; border-radius: 6px;
-    text-decoration:none; font-weight:700; white-space:nowrap;
-  }
-  .nav-toggle{ display:none; background:none; border:1px solid var(--border); color:var(--text); border-radius:6px; padding:6px 10px; font-size:18px; cursor:pointer; }
-
-  /* HERO */
-  header.hero{ padding: 96px 0 80px; }
-  .eyebrow{
-    font-family: var(--mono); color: var(--text-dim); font-size: 13px;
-    display:flex; align-items:center; gap:8px; margin-bottom: 20px; letter-spacing:0.02em;
-  }
-  .eyebrow::before{ content:''; width:8px; height:8px; border-radius:50%; background: var(--accent); box-shadow: 0 0 0 4px rgba(179,179,179,0.15); }
-  h1{
-    font-family: var(--display);
-    font-size: clamp(34px, 5vw, 54px);
-    font-weight: 400;
-    letter-spacing: -0.01em;
-    line-height: 1.12;
-    margin-bottom: 18px;
-  }
-  h1 .grad{ color: var(--text); }
-  .lede{ font-size: 18px; color: var(--text-dim); max-width: 620px; margin-bottom: 32px; }
-  .lede strong{ color: var(--text); font-weight: 600; }
-  .hero-actions{ display:flex; flex-wrap:wrap; gap: 12px; margin-bottom: 40px; }
-  .btn{
-    font-family: var(--sans); font-weight: 600; font-size: 14px;
-    padding: 11px 20px; border-radius: 8px; text-decoration:none;
-    display:inline-flex; align-items:center; gap:8px; transition: all .15s;
-    border: 1px solid transparent;
-  }
-  .btn-primary{ background: var(--text); color: var(--bg); }
-  .btn-primary:hover{ transform: translateY(-1px); opacity:0.92; }
-  .btn-ghost{ border-color: var(--border); color: var(--text); }
-  .btn-ghost:hover{ border-color: var(--accent); color: var(--accent); }
-
-  .taglist{ display:flex; flex-wrap:wrap; gap:8px; }
-  .tag{
-    font-family: var(--mono); font-size: 12.5px; color: var(--text-dim);
-    background: var(--bg-elev); border: 1px solid var(--border);
-    padding: 5px 10px; border-radius: 6px;
-  }
-
-  /* SECTION SHARED */
-  section{ padding: 64px 0; border-top: 1px solid var(--border); }
-  .section-head{ margin-bottom: 36px; }
-  .section-num{ font-family: var(--mono); color: var(--accent); font-size: 13px; margin-bottom: 6px; }
-  .section-title{ font-family: var(--display); font-size: 28px; font-weight: 400; letter-spacing:-0.01em; }
-  .section-sub{ color: var(--text-dim); margin-top: 8px; max-width: 620px; font-size: 15px; }
-
-  /* ABOUT */
-  .about-grid{ display:grid; grid-template-columns: 1.4fr 1fr; gap: 40px; }
-  .about-grid p{ color: var(--text-dim); margin-bottom: 14px; font-size: 15.5px; }
-  .about-grid p strong{ color: var(--text); }
-  .facts{ background: var(--bg-elev); border: 1px solid var(--border); border-radius: 12px; padding: 22px; height:fit-content; }
-  .fact{ display:flex; justify-content:space-between; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 14px; }
-  .fact:last-child{ border-bottom:none; }
-  .fact-label{ color: var(--text-faint); font-family: var(--mono); font-size: 12.5px; }
-  .fact-value{ color: var(--text); font-weight:600; text-align:right; }
-
-  /* SKILLS */
-  .skills-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 18px; }
-  .skill-card{ background: var(--bg-elev); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
-  .skill-card h3{ font-size: 15px; margin-bottom: 12px; font-weight:700; }
-  .skill-list{ display:flex; flex-wrap:wrap; gap:6px; }
-  .skill-list span{
-    font-family: var(--mono); font-size: 12px; color: var(--text-dim);
-    background: var(--bg-elev-2); padding: 4px 9px; border-radius: 5px;
-  }
-
-  /* EXPERIENCE */
-  .timeline{ position:relative; padding-left: 28px; }
-  .timeline::before{ content:''; position:absolute; left:5px; top:6px; bottom:6px; width:2px; background: var(--border); }
-  .tl-item{ position:relative; padding-bottom: 36px; }
-  .tl-item:last-child{ padding-bottom:0; }
-  .tl-dot{ position:absolute; left:-28px; top:4px; width:12px; height:12px; border-radius:50%; background: var(--bg); border: 2px solid var(--accent); }
-  .tl-head{ display:flex; flex-wrap:wrap; justify-content:space-between; align-items:baseline; gap:8px; margin-bottom:6px; }
-  .tl-role{ font-family: var(--display); font-size: 18px; font-weight:400; }
-  .tl-org{ color: var(--text); font-weight:600; }
-  .tl-date{ font-family: var(--mono); font-size: 12.5px; color: var(--text-faint); white-space:nowrap; }
-  .tl-item ul{ margin-top: 10px; padding-left: 18px; color: var(--text-dim); font-size: 14.5px; }
-  .tl-item li{ margin-bottom: 6px; }
-  .tl-item li::marker{ color: var(--accent); }
-
-  /* PROJECTS */
-  .proj-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 20px; }
-  .proj-card{
-    background: var(--bg-elev); border: 1px solid var(--border); border-radius: 12px;
-    padding: 22px; display:flex; flex-direction:column; transition: border-color .15s, transform .15s;
-  }
-  .proj-card:hover{ border-color: var(--accent); transform: translateY(-2px); }
-  .proj-card h3{ font-family: var(--display); font-weight:400; font-size: 18px; margin-bottom: 8px; }
-  .proj-card p{ color: var(--text-dim); font-size: 14px; margin-bottom: 14px; flex-grow:1; }
-  .proj-tags{ display:flex; flex-wrap:wrap; gap:6px; }
-  .proj-tags span{ font-family: var(--mono); font-size: 11px; color: var(--accent); background: rgba(179,179,179,0.08); padding: 3px 8px; border-radius: 5px; }
-
-  /* EDUCATION */
-  .edu-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 18px; margin-bottom: 32px; }
-  .edu-card{ background: var(--bg-elev); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
-  .edu-card .badge{ font-family: var(--mono); font-size: 11px; color: var(--accent); background: rgba(179,179,179,0.1); padding: 3px 9px; border-radius: 20px; display:inline-block; margin-bottom: 10px; }
-  .edu-card h3{ font-family: var(--display); font-weight:400; font-size: 17px; margin-bottom: 4px; }
-  .edu-card .inst{ color: var(--text-dim); font-size: 13.5px; margin-bottom: 8px; }
-  .edu-card .when{ font-family: var(--mono); font-size: 12px; color: var(--text-faint); }
-
-  .courses{ background: var(--bg-elev); border: 1px solid var(--border); border-radius: 12px; padding: 22px; }
-  .courses h4{ font-size: 13px; font-family: var(--mono); color: var(--text-faint); margin-bottom: 14px; text-transform:uppercase; letter-spacing:0.04em; }
-  .course-list{ display:flex; flex-wrap:wrap; gap:8px; }
-  .course-list span{ font-size: 13px; color: var(--text-dim); background: var(--bg-elev-2); padding: 6px 12px; border-radius: 6px; border: 1px solid var(--border); }
-
-  /* CONTACT */
-  .contact-box{
-    background: var(--bg-elev);
-    border: 1px solid var(--border); border-radius: 16px; padding: 48px; text-align:center;
-  }
-  .contact-box h2{ font-family: var(--display); font-size: 30px; font-weight:400; margin-bottom: 12px; letter-spacing:-0.01em; }
-  .contact-box p{ color: var(--text-dim); margin-bottom: 28px; }
-  .contact-links{ display:flex; flex-wrap:wrap; justify-content:center; gap: 12px; }
-
-  footer{ padding: 32px 0 48px; text-align:center; color: var(--text-faint); font-size: 13px; font-family: var(--mono); }
-  footer a{ color: var(--text-dim); }
-
-  @media (max-width: 760px){
-    .navlinks{ display:none; }
-    .about-grid{ grid-template-columns: 1fr; }
-    .hero{ padding: 64px 0 48px; }
-    .contact-box{ padding: 32px 20px; }
-  }
-</style>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<nav>
-  <div class="wrap">
-    <ul class="navlinks">
-      <li><a href="#sobre">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#experiencia">Experience</a></li>
-      <li><a href="#projetos">Highlights</a></li>
-      <li><a href="#formacao">Education</a></li>
-    </ul>
-    <a class="nav-cta" href="mailto:thaleslealveloso@outlook.com">Contact</a>
-  </div>
-</nav>
-
-<header class="hero">
-  <div class="wrap">
-    <div class="eyebrow">São José do Rio Preto - SP</div>
-    <h1>Thales Leal Veloso<br><span class="grad">Developer &amp; IT</span></h1>
-    <p class="lede">
-      <strong>Computer Science student (7th semester)</strong> with a solid foundation in
-      <strong>infrastructure, networking, and Active Directory</strong>, and hands-on experience building
-      <strong>process automations (RPA) and API integrations in Python</strong>. Also taking a technical course
-      in Information Security, Cyber Defense &amp; Pentest (Senac).
-    </p>
-    <div class="hero-actions">
-      <a class="btn btn-primary" href="mailto:thaleslealveloso@outlook.com">Get in touch</a>
-      <a class="btn btn-ghost" href="https://github.com/lealthales" target="_blank" rel="noopener">github.com/lealthales ↗</a>
-      <a class="btn btn-ghost" href="tel:+5517992553783">(17) 99255-3783</a>
-    </div>
-    <div class="taglist">
-      <span class="tag">Python</span><span class="tag">Flask</span><span class="tag">Playwright</span>
-      <span class="tag">APIs REST</span><span class="tag">SQL/PostgreSQL</span><span class="tag">Active Directory</span>
-      <span class="tag">Windows Server</span><span class="tag">Cisco/CCNA</span><span class="tag">Information Security</span>
-    </div>
-  </div>
+<header class="nav">
+  <a href="#top" class="logo">Thales Leal Veloso</a>
+  <button class="lang-btn" id="langBtn"><span lang="pt">EN</span><span lang="en">PT</span></button>
 </header>
 
-<section id="sobre">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="section-num">01 · About</div>
-      <div class="section-title">About me</div>
-    </div>
-    <div class="about-grid">
+<main id="top">
+
+  <section class="hero">
+    <h1>Thales Leal Veloso</h1>
+    <p class="role">
+      <span lang="pt">Assistente de TI · Suporte, Infraestrutura e Desenvolvimento</span>
+      <span lang="en">IT Assistant · Support, Infrastructure and Development</span>
+    </p>
+    <p class="lead">
+      <span lang="pt">Sou Assistente de TI na Ultra-X, em São José do Rio Preto. Administro Windows Server e Active Directory, cuido da rede, telefonia e câmeras IP, dou suporte aos usuários e desenvolvo automações com Python, Playwright e APIs REST.</span>
+      <span lang="en">I'm an IT Assistant at Ultra-X in São José do Rio Preto, Brazil. I manage Windows Server and Active Directory, take care of the network, IP telephony and cameras, support users and build automations with Python, Playwright and REST APIs.</span>
+    </p>
+  </section>
+
+  <section id="projetos" class="section">
+    <h2><span lang="pt">Projetos</span><span lang="en">Projects</span></h2>
+
+    <article class="project">
+      <div class="p-head">
+        <h3>OpenITAM</h3>
+        <span class="badge"><span lang="pt">Em produção</span><span lang="en">In production</span></span>
+      </div>
+      <p lang="pt">Sistema open source de inventário e gestão de ativos de TI. API REST em FastAPI com PostgreSQL e um agente para estações Windows que coleta dados de hardware via CIM/WMI. Implantado em Windows Server 2016 no ambiente real da clínica.</p>
+      <p lang="en">Open source IT asset inventory and management system. FastAPI REST API with PostgreSQL and a Windows agent that collects hardware data through CIM/WMI. Deployed on Windows Server 2016 in the clinic's real environment.</p>
+      <div class="chips"><span>FastAPI</span><span>PostgreSQL</span><span>API REST</span><span>CIM/WMI</span><span>Windows Server</span></div>
+      <a class="link" href="https://github.com/lealthales" target="_blank" rel="noopener"><span lang="pt">Ver no GitHub</span><span lang="en">View on GitHub</span></a>
+    </article>
+
+    <article class="project">
+      <div class="p-head">
+        <h3><span lang="pt">Robô Nota Fiscal</span><span lang="en">Invoice Robot</span></h3>
+        <span class="badge"><span lang="pt">Participação</span><span lang="en">Contributor</span></span>
+      </div>
+      <p lang="pt">Automação RPA do fluxo de emissão e conciliação de notas fiscais, integrando duas APIs REST externas (Netris e AQualidade) com autenticação JWT e Playwright nas etapas sem API. Eliminou trabalho manual repetitivo no faturamento.</p>
+      <p lang="en">RPA automation of the invoice issuing and reconciliation flow, integrating two external REST APIs (Netris and AQualidade) with JWT authentication and Playwright for steps without an API. Removed repetitive manual work from billing.</p>
+      <div class="chips"><span>Python</span><span>Playwright</span><span>API REST</span><span>JWT</span></div>
+    </article>
+  </section>
+
+  <section id="experiencia" class="section">
+    <h2><span lang="pt">Experiência</span><span lang="en">Experience</span></h2>
+
+    <div class="row">
       <div>
-        <p>
-          I'm an IT professional with <strong>experience in infrastructure, networking, and Active Directory</strong>,
-          currently studying Computer Science at UNIRP and Information Security, Cyber Defense &amp;
-          Pentest at Senac.
-        </p>
-        <p>
-          I have experience with technical support, network administration, IP telephony, cameras, and access
-          control, as well as <strong>building automations in Python, RPAs, and API integrations</strong> to
-          cut down manual work and rework.
-        </p>
-        <p>
-          I'm currently focused on growing further into software development, with interest in
-          <strong>C#, microservices, and automated testing</strong>.
-        </p>
-        <p>
-          What sets me apart is combining infrastructure, security, and development. I care about how systems work, and just as much about keeping them available and secure in production.
-        </p>
+        <h3><span lang="pt">Assistente de TI</span><span lang="en">IT Assistant</span></h3>
+        <p class="org">Ultra-X</p>
+        <p lang="pt">Suporte a usuários, Active Directory, redes, telefonia e câmeras IP, automações e homologação de sistemas.</p>
+        <p lang="en">User support, Active Directory, networking, IP telephony and cameras, automations and system rollout.</p>
       </div>
-      <div class="facts">
-        <div class="fact"><span class="fact-label">LOCATION</span><span class="fact-value">São José do Rio Preto - SP</span></div>
-        <div class="fact"><span class="fact-label">CURRENT ROLE</span><span class="fact-value">IT Assistant</span></div>
-        <div class="fact"><span class="fact-label">COMPANY</span><span class="fact-value">Ultra-X</span></div>
-        <div class="fact"><span class="fact-label">EDUCATION</span><span class="fact-value">Computer Science (7th sem.)</span></div>
-        <div class="fact"><span class="fact-label">EXPECTED</span><span class="fact-value">Graduating 07/2027</span></div>
-        <div class="fact"><span class="fact-label">CURRENTLY STUDYING</span><span class="fact-value">Info. Security &amp; Pentest</span></div>
-        <div class="fact"><span class="fact-label">EMAIL</span><span class="fact-value">thaleslealveloso@outlook.com</span></div>
-      </div>
+      <span class="date"><span lang="pt">10/2025 a atual</span><span lang="en">10/2025 to present</span></span>
     </div>
-  </div>
-</section>
 
-<section id="skills">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="section-num">02 · Skills</div>
-      <div class="section-title">Technical skills</div>
-      <div class="section-sub">A hybrid foundation across development, infrastructure, and security.</div>
+    <div class="row">
+      <div>
+        <h3><span lang="pt">Estagiário de TI</span><span lang="en">IT Intern</span></h3>
+        <p class="org">ICEC Jorcal</p>
+        <p lang="pt">Suporte N1/N2, manutenção de estações, impressoras e periféricos.</p>
+        <p lang="en">Tier 1/2 support, maintenance of workstations, printers and peripherals.</p>
+      </div>
+      <span class="date"><span lang="pt">12/2024 a 10/2025</span><span lang="en">12/2024 to 10/2025</span></span>
     </div>
-    <div class="skills-grid">
-      <div class="skill-card">
-        <h3>Development &amp; Automation</h3>
-        <div class="skill-list">
-          <span>Python</span><span>Flask</span><span>Playwright</span><span>requests</span>
-          <span>Java (basic)</span><span>SQL / PostgreSQL</span><span>HTML</span><span>CSS</span>
-          <span>JavaScript</span><span>Git / GitHub</span><span>API integration</span><span>RPA</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <h3>Infrastructure &amp; Networking</h3>
-        <div class="skill-list">
-          <span>Active Directory</span><span>Windows Server</span><span>Networking (Cisco/CCNA)</span>
-          <span>IP telephony</span><span>IP cameras</span><span>PowerShell</span><span>Hardware support</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <h3>Information Security</h3>
-        <div class="skill-list">
-          <span>Information security fundamentals</span><span>Cyber defense</span><span>Pentest (in training)</span>
-          <span>Access management (AD)</span><span>Security best practices</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <h3>Support &amp; Communication</h3>
-        <div class="skill-list">
-          <span>Multichannel support</span><span>SLA compliance</span><span>Simplified technical communication</span>
-          <span>Problem-solving</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<section id="experiencia">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="section-num">03 · Experience</div>
-      <div class="section-title">Professional journey</div>
+    <div class="row">
+      <div>
+        <h3><span lang="pt">Jovem Aprendiz de TI</span><span lang="en">IT Apprentice</span></h3>
+        <p class="org">Santa Casa de São José do Rio Preto</p>
+        <p lang="pt">Service desk e suporte a usuários em ambiente hospitalar.</p>
+        <p lang="en">Service desk and user support in a hospital environment.</p>
+      </div>
+      <span class="date"><span lang="pt">10/2023 a 12/2024</span><span lang="en">10/2023 to 12/2024</span></span>
     </div>
-    <div class="timeline">
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-head">
-          <div><span class="tl-role">IT Assistant</span> at <span class="tl-org">Ultra-X (Diagnostic Imaging)</span></div>
-          <div class="tl-date">Nov 2025 to Present · 8 months</div>
-        </div>
-        <ul>
-          <li>Network and Active Directory administration (switches, Cisco IP telephony, IP cameras), including access management and user permissions.</li>
-          <li>Built process automations (RPA) in Python, with API-based system integration to reduce manual work and rework.</li>
-          <li>Deployed and maintained software on workstations via PowerShell/AD, focused on standardization and reducing attack surface.</li>
-          <li>Worked on deploying and maintaining production systems, with attention to availability, security, and service continuity.</li>
-          <li>Multichannel technical support (in person, phone, tickets), identifying, prioritizing, and resolving incidents.</li>
-        </ul>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-head">
-          <div><span class="tl-role">IT Intern</span> at <span class="tl-org">ICEC Jorcal</span></div>
-          <div class="tl-date">~1 year</div>
-        </div>
-        <ul>
-          <li>Provided infrastructure and internal systems support, handling technical support tickets and helping maintain network and equipment.</li>
-          <li>Tracked deadlines and prioritized by criticality, helping meet internal SLAs.</li>
-        </ul>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-head">
-          <div><span class="tl-role">IT Young Apprentice</span> at <span class="tl-org">Santa Casa</span></div>
-          <div class="tl-date">~1 year and 2 months</div>
-        </div>
-        <ul>
-          <li>First professional IT experience: user support, helping with network and infrastructure routines.</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
 
-<section id="projetos">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="section-num">04 · Highlights</div>
-      <div class="section-title">Projects &amp; initiatives</div>
-      <div class="section-sub">Hands-on work built as part of my day-to-day job.</div>
+    <div class="row">
+      <div>
+        <h3><span lang="pt">Operador de Callcenter (estágio)</span><span lang="en">Call Center Operator (internship)</span></h3>
+        <p class="org"><span lang="pt">Contabilidade</span><span lang="en">Accounting firm</span></p>
+        <p lang="pt">Atendimento B2B ativo e receptivo a pequenas empresas, com revisão de contratos, recuperação de juros abusivos, negociação e metas comerciais.</p>
+        <p lang="en">Inbound and outbound B2B service for small businesses, covering contract reviews, recovery of abusive interest, negotiation and sales targets.</p>
+      </div>
+      <span class="date">2023</span>
     </div>
-    <div class="proj-grid">
-      <div class="proj-card">
-        <h3>Internal process automation</h3>
-        <p>Automations built in Python to eliminate manual work and rework, with API-based integration of internal systems that cuts down service time.</p>
-        <div class="proj-tags"><span>Python</span><span>Playwright</span><span>requests</span><span>APIs</span></div>
-      </div>
-      <div class="proj-card">
-        <h3>Environment standardization via AD/PowerShell</h3>
-        <p>Deployed and maintained software on workstations via PowerShell and Active Directory, standardizing environments and reducing attack surface.</p>
-        <div class="proj-tags"><span>PowerShell</span><span>Active Directory</span><span>Windows Server</span></div>
-      </div>
-      <div class="proj-card">
-        <h3>Network administration &amp; IP telephony</h3>
-        <p>Managed switches, Cisco IP telephony, and IP cameras in a corporate environment, focused on service continuity and availability.</p>
-        <div class="proj-tags"><span>Cisco/CCNA</span><span>IP telephony</span><span>Infrastructure</span></div>
-      </div>
-      <div class="proj-card">
-        <h3>Information Security &amp; Pentest track</h3>
-        <p>Ongoing technical training (Senac) with hands-on pentest practice in labs and CTFs, deepening skills in vulnerability analysis and incident response.</p>
-        <div class="proj-tags"><span>Pentest</span><span>CTF</span><span>Cyber Defense</span></div>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
 
-<section id="formacao">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="section-num">05 · Education</div>
-      <div class="section-title">Education &amp; courses</div>
-    </div>
-    <div class="edu-grid">
-      <div class="edu-card">
-        <span class="badge">Degree in progress</span>
-        <h3>Computer Science</h3>
-        <div class="inst">UNIRP, Centro Universitário de Rio Preto</div>
-        <div class="when">7th semester · expected graduation 07/2027</div>
-      </div>
-      <div class="edu-card">
-        <span class="badge">Technical course in progress</span>
-        <h3>Information Security, Cyber Defense &amp; Pentest</h3>
-        <div class="inst">Senac</div>
-        <div class="when">In progress</div>
-      </div>
-    </div>
-    <div class="courses">
-      <h4>Additional courses</h4>
-      <div class="course-list">
-        <span>Information Security (Udemy)</span>
-        <span>Information Security (Senac)</span>
-        <span>Cisco/CCNA networking (intro)</span>
-        <span>HTML and CSS (Curso em Vídeo, YouTube)</span>
-        <span>Java (with Nélio Alves)</span>
-        <span>Java Bootcamp (DIO)</span>
-        <span>Python Bootcamp (DIO)</span>
-        <span>Administrative Assistant (SEST SENAT)</span>
-        <span>People Management (SEST SENAT)</span>
-      </div>
-    </div>
-  </div>
-</section>
+  <section id="formacao" class="section">
+    <h2><span lang="pt">Formação</span><span lang="en">Education</span></h2>
 
-<section id="contato">
-  <div class="wrap">
-    <div class="contact-box">
-      <h2>Let's talk?</h2>
-      <p>If you'd like to talk about development, infrastructure, or information security, feel free to reach out!</p>
-      <div class="contact-links">
-        <a class="btn btn-primary" href="mailto:thaleslealveloso@outlook.com">thaleslealveloso@outlook.com</a>
-        <a class="btn btn-ghost" href="tel:+5517992553783">(17) 99255-3783</a>
-        <a class="btn btn-ghost" href="https://github.com/lealthales" target="_blank" rel="noopener">GitHub ↗</a>
+    <h3 class="group"><span lang="pt">Formação acadêmica e técnica</span><span lang="en">Academic and technical education</span></h3>
+
+    <div class="row">
+      <div>
+        <h3><span lang="pt">Bacharelado em Ciência da Computação</span><span lang="en">B.Sc. in Computer Science</span></h3>
+        <p class="org">UNIRP</p>
       </div>
+      <span class="date"><span lang="pt">Em andamento</span><span lang="en">In progress</span></span>
     </div>
-  </div>
-</section>
 
-<footer>
-  <div class="wrap">
-    © <span id="year"></span> Thales Leal Veloso · São José do Rio Preto - SP
-  </div>
-</footer>
+    <div class="row">
+      <div>
+        <h3><span lang="pt">Técnico em Segurança da Informação, Defesa Cibernética e Pentest</span><span lang="en">Technical Program in Information Security, Cyber Defense and Pentest</span></h3>
+        <p class="org">Senac</p>
+      </div>
+      <span class="date"><span lang="pt">Previsão 12/2026</span><span lang="en">Expected 12/2026</span></span>
+    </div>
 
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-</script>
+    <h3 class="group"><span lang="pt">Cursos extras</span><span lang="en">Additional courses</span></h3>
 
+    <div class="row">
+      <div>
+        <h3><span lang="pt">CCNA: Introdução às Redes</span><span lang="en">CCNA: Introduction to Networks</span></h3>
+        <p class="org">Cisco Networking Academy</p>
+      </div>
+      <span class="date"><span lang="pt">Concluído</span><span lang="en">Completed</span></span>
+    </div>
+
+    <div class="row">
+      <div>
+        <h3><span lang="pt">Java completo: POO e projetos</span><span lang="en">Complete Java: OOP and projects</span></h3>
+        <p class="org">Udemy, Prof. Nélio Alves</p>
+      </div>
+      <span class="date"><span lang="pt">Concluído</span><span lang="en">Completed</span></span>
+    </div>
+
+    <div class="row">
+      <div>
+        <h3><span lang="pt">Assistente Administrativo</span><span lang="en">Administrative Assistant</span></h3>
+        <p class="org"><span lang="pt">Programa Jovem Aprendiz, Sest Senat</span><span lang="en">Young Apprentice Program, Sest Senat</span></p>
+        <p lang="pt">Administração, gestão de pessoas e customer success.</p>
+        <p lang="en">Business administration, people management and customer success.</p>
+      </div>
+      <span class="date"><span lang="pt">Concluído</span><span lang="en">Completed</span></span>
+    </div>
+
+    <div class="row">
+      <div>
+        <h3><span lang="pt">Inglês</span><span lang="en">English</span></h3>
+        <p class="org"><span lang="pt">CNA, formação completa</span><span lang="en">CNA, full program</span></p>
+        <p lang="pt">Nível avançado.</p>
+        <p lang="en">Advanced level.</p>
+      </div>
+      <span class="date"><span lang="pt">Concluído</span><span lang="en">Completed</span></span>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">© <span id="year"></span> Thales Leal Veloso</footer>
+
+<script src="main.js"></script>
 </body>
 </html>
